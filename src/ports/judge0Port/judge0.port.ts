@@ -15,7 +15,7 @@ export default class Judge0Port{
                   stdin: data.stdin ?? ''
                 });
         debug('init fetch with url: %s, headers: %s, body: %s', this.baseUrl, headers, body);
-        const response = await fetch(
+        return await fetch(
             finalUrl,
             {
                 method: 'POST',
@@ -23,7 +23,6 @@ export default class Judge0Port{
                 body
             }
         );
-        return response.json();
     }
 
     public static async getResult(token: string){

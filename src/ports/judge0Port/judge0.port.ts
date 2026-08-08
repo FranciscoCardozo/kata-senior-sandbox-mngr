@@ -8,7 +8,7 @@ export default class Judge0Port{
     private static readonly baseUrl = config.JUDGE0_URL;
 
     public static async submit(data: ExecutionCodeRequest): Promise<any>{
-       try {
+
         const finalUrl = `${this.baseUrl}/submissions?wait=true`;
         const headers = {'Content-Type': 'application/json'};
         const body = JSON.stringify({
@@ -16,9 +16,7 @@ export default class Judge0Port{
                   language_id: data.languageId,
                   stdin: data.stdin ?? ''
                 });
-        console.log('init fetch with url: %s, headers: %s, body: %s', this.baseUrl);
-        console.log('init fetch with url: %s, headers: %s, body: %s', headers);
-        console.log('init fetch with url: %s, headers: %s, body: %s', body);
+        console.log('Request with: url: %s headers: %s body: %s', finalUrl, headers, body);
         const response = await fetch(
             finalUrl,
             {
@@ -28,14 +26,7 @@ export default class Judge0Port{
             }
         );
 
-        console.log('RESPONSE FETCH', response);
-        console.log('status:', response.status);
-        console.log('body:', await response.text());
-
         return response.json();
-       } catch (error) {
-            console.log('Error Fetching: ', error);
-       }
     }
 
     public static async getResult(token: string): Promise<any>{

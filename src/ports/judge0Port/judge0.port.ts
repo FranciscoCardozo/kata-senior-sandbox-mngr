@@ -26,6 +26,10 @@ export default class Judge0Port{
             }
         );
 
+        console.log('RESPONSE FETCH', response);
+        console.log('status:', response.status);
+        console.log('body:', await response.text());
+
         return response.json();
     }
 

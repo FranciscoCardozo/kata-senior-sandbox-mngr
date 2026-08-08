@@ -1,3 +1,4 @@
+import e from "express";
 import config from "../../config";
 import { ExecutionCodeRequest } from "../../domain/models/executionCodeRequest.interface";
 import debugLib from 'debug';
@@ -7,6 +8,7 @@ export default class Judge0Port{
     private static readonly baseUrl = config.JUDGE0_URL;
 
     public static async submit(data: ExecutionCodeRequest): Promise<any>{
+       try {
         const finalUrl = `${this.baseUrl}/submissions?wait=true`;
         const headers = {'Content-Type': 'application/json'};
         const body = JSON.stringify({
@@ -31,6 +33,9 @@ export default class Judge0Port{
         console.log('body:', await response.text());
 
         return response.json();
+       } catch (error) {
+            console.log('Error Fetching: ', error);
+       }
     }
 
     public static async getResult(token: string): Promise<any>{

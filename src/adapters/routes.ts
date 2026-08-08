@@ -9,7 +9,7 @@ router.get("/V1/product/sandbox/getResult/:id", async (req, res) => {
     return await SandboxAdapter.getResult(req, res);
 });
 
-router.post("/V1/product/sandbox/submission", async (req, res) => {
+router.post("/V1/product/sandbox/submit", async (req, res) => {
     return await SandboxAdapter.sendSubmission(req, res);
 });
 

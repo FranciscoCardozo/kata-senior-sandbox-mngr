@@ -16,7 +16,6 @@ export default class Judge0Port{
                   language_id: data.languageId,
                   stdin: data.stdin ?? ''
                 });
-        console.log('Request with: url: %s headers: %s body: %s', finalUrl, headers, body);
         const response = await fetch(
             finalUrl,
             {

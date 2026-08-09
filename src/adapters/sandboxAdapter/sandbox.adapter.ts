@@ -12,10 +12,8 @@ export default class SandboxAdapter{
             const body: ExecutionCodeRequest = req.body;
             debug('Init to send submission: Body: ', body);
             const result = await Judge0Port.submit(body);
-            console.log('result :', result);
             res.status(200).json({result});
         }catch(err: any){
-            console.log('Error:', err);
             debug('Error with Judg0 submit: Rs: ', err);
             res.status(500).json({err});
         }
